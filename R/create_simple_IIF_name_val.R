@@ -16,10 +16,10 @@
 create_simple_IIF_name_val <- function(calc_name, names_col, value_col, tool){
 
     if(tool %in% c("Tableau", "PowerBI")){
-        a_twb_cal <- dplyr::case_when(
+        a_calc <- dplyr::case_when(
             tool == "Tableau" ~ paste0("IIF(", names_col, " = '", calc_name, "', ", value_col, ", null)"),
             tool == "PowerBI" ~ paste0(calc_name, " = CALCULATE(sum(db_dsf[", value_col, "]), filter(db_dsf, db_dsf[", names_col, "]='", calc_name, "'))"),
-            TRUE ~ "wrong tool"
+            .default =  "wrong tool"
         )
 
     }
@@ -30,6 +30,3 @@ create_simple_IIF_name_val <- function(calc_name, names_col, value_col, tool){
      }
 
 }
-
-
-

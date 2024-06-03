@@ -2,4 +2,5 @@
 
 export("%>%")
 export(create_simple_IIF_name_val)
+export(simple_percentage_calc)
 importFrom(magrittr,"%>%")
